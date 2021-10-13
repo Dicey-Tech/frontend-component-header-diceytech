@@ -21,11 +21,12 @@ ensureConfig([
   'LOGIN_URL',
   'SITE_NAME',
   'LOGO_URL',
+  'ORDER_HISTORY_URL',
 ], 'Header component');
 
 subscribe(APP_CONFIG_INITIALIZED, () => {
   mergeConfig({
-    LOGISTRATION_MINIMAL_HEADER: !!process.env.LOGISTRATION_MINIMAL_HEADER,
+    AUTHN_MINIMAL_HEADER: !!process.env.AUTHN_MINIMAL_HEADER,
   }, 'Header additional config');
 });
 
@@ -58,6 +59,11 @@ function Header({ intl }) {
     },
     {
       type: 'item',
+      href: config.ORDER_HISTORY_URL,
+      content: intl.formatMessage(messages['header.user.menu.order.history']),
+    },
+    {
+      type: 'item',
       href: config.LOGOUT_URL,
       content: intl.formatMessage(messages['header.user.menu.logout']),
     },
@@ -79,14 +85,13 @@ function Header({ intl }) {
   const props = {
     logo: config.LOGO_URL,
     logoAltText: config.SITE_NAME,
-    siteName: config.SITE_NAME,
     logoDestination: `${config.LMS_BASE_URL}/dashboard`,
     loggedIn: authenticatedUser !== null,
     username: authenticatedUser !== null ? authenticatedUser.username : null,
     avatar: authenticatedUser !== null ? authenticatedUser.avatar : null,
-    mainMenu: getConfig().LOGISTRATION_MINIMAL_HEADER ? [] : mainMenu,
-    userMenu,
-    loggedOutItems: getConfig().LOGISTRATION_MINIMAL_HEADER ? [] : loggedOutItems,
+    mainMenu: getConfig().AUTHN_MINIMAL_HEADER ? [] : mainMenu,
+    userMenu: getConfig().AUTHN_MINIMAL_HEADER ? [] : userMenu,
+    loggedOutItems: getConfig().AUTHN_MINIMAL_HEADER ? [] : loggedOutItems,
   };
 
   return (
