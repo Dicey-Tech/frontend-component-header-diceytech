@@ -22,14 +22,13 @@ function Header(_ref) {
 
   var mainMenu = [{
     type: 'item',
-    href: "".concat(config.LMS_BASE_URL, "/dashboard"),
-    content: intl.formatMessage(messages['header.links.courses'])
-  }];
-  var orderHistoryItem = {
+    href: "".concat(config.MARKETING_SITE_BASE_URL, "/"),
+    content: intl.formatMessage(messages['header.links.content.search'])
+  }, {
     type: 'item',
-    href: config.ORDER_HISTORY_URL,
-    content: intl.formatMessage(messages['header.user.menu.order.history'])
-  };
+    href: "".concat(config.PORTFOLIO_URL, "/"),
+    content: intl.formatMessage(messages['header.links.portfolio'])
+  }];
   var userMenu = authenticatedUser === null ? [] : [{
     type: 'item',
     href: "".concat(config.LMS_BASE_URL, "/dashboard"),
@@ -46,12 +45,7 @@ function Header(_ref) {
     type: 'item',
     href: config.LOGOUT_URL,
     content: intl.formatMessage(messages['header.user.menu.logout'])
-  }]; // Users should only see Order History if have a ORDER_HISTORY_URL define in the environment.
-
-  if (config.ORDER_HISTORY_URL) {
-    userMenu.splice(-1, 0, orderHistoryItem);
-  }
-
+  }];
   var loggedOutItems = [{
     type: 'item',
     href: config.LOGIN_URL,

@@ -5,6 +5,11 @@ var messages = defineMessages({
     defaultMessage: 'Courses',
     description: 'Link to the learner course dashboard'
   },
+  'header.links.portfolio': {
+    id: 'header.links.portfolio',
+    defaultMessage: 'Portfolio',
+    description: 'Link to the learner portfolio'
+  },
   'header.links.programs': {
     id: 'header.links.programs',
     defaultMessage: 'Programs',
@@ -12,7 +17,7 @@ var messages = defineMessages({
   },
   'header.links.content.search': {
     id: 'header.links.content.search',
-    defaultMessage: 'Discover New',
+    defaultMessage: 'Explore Projects',
     description: 'Link to the content search page'
   },
   'header.links.schools': {

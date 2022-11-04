@@ -36,16 +36,15 @@ function Header({ intl }) {
   const mainMenu = [
     {
       type: 'item',
-      href: `${config.LMS_BASE_URL}/dashboard`,
-      content: intl.formatMessage(messages['header.links.courses']),
+      href: `${config.MARKETING_SITE_BASE_URL}/`,
+      content: intl.formatMessage(messages['header.links.content.search']),
+    },
+    {
+      type: 'item',
+      href: `${config.PORTFOLIO_URL}/`,
+      content: intl.formatMessage(messages['header.links.portfolio']),
     },
   ];
-
-  const orderHistoryItem = {
-    type: 'item',
-    href: config.ORDER_HISTORY_URL,
-    content: intl.formatMessage(messages['header.user.menu.order.history']),
-  };
 
   const userMenu = authenticatedUser === null ? [] : [
     {
@@ -69,11 +68,6 @@ function Header({ intl }) {
       content: intl.formatMessage(messages['header.user.menu.logout']),
     },
   ];
-
-  // Users should only see Order History if have a ORDER_HISTORY_URL define in the environment.
-  if (config.ORDER_HISTORY_URL) {
-    userMenu.splice(-1, 0, orderHistoryItem);
-  }
 
   const loggedOutItems = [
     {
